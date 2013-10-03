@@ -22,17 +22,17 @@ function loop(){
     	console.log("listen to twitter");
         //begin to listen to twitter
         twit.stream('filter', { track: track }, function(stream) {
-			//event
+		//event
    		stream.on('data', function(data) {
     		if(output(data) && !isOn){
-   				setTimeout(function(){
+   			setTimeout(function(){
 	    		//here is where the colorGradient should go. colorGradient() will swirl colors then turn to white. 	    		    	
 	    	   	colorGradient();
 	     		isOn = false;
-			}, timeOn);    	   	
-		}
+				}, timeOn);    	   	
+			}
+		});
 	});
-});
     }
 }
 
@@ -55,7 +55,7 @@ function start(){
 function delay(){
 setTimeout(function(){
    begin = false;   
-}, 5000);
+	}, 5000);
 }
 
 function colorGradient(){
