@@ -5,7 +5,7 @@ var track = "javascript";
 var isOn = false; //keeps track if led is on and doesn't allow new connection to be opened if it is
 var startValue = .1; //initial starting value, also modified by 'i'
 var i = .03;// +/- direction in which the light moves
-var begin = true;
+var startup = true;
 var timer = 1;
 var rR, rG, rB;
 setInterval(loop, 300);
@@ -18,7 +18,7 @@ var twit = new twitter({
 });
 //void
 function loop(){
-    if(begin == true){
+    if(startup == true){
         start();        
     }else{
     	console.log("listen to twitter");
@@ -45,7 +45,7 @@ function start(){
     piblaster.setPwm(3, startValue);
     piblaster.setPwm(4, startValue);
     startValue += i;
-    console.log(startValue, begin);
+    console.log(startValue, startup);
     if(startValue >= 1) //if light is fully on, stay on
     {        
         startValue = 1; // light is on, probably redundant but will keep the setPwm at 1
@@ -56,7 +56,7 @@ function start(){
 
 function delay(){
 setTimeout(function(){
-   begin = false;   
+   startup = false;   
 	}, 5000);
 }
 
