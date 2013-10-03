@@ -3,9 +3,8 @@ var piblaster = require('pi-blaster.js');
 
 var track = "javascript";
 var isOn = false; //keeps track if led is on and doesn't allow new connection to be opened if it is
-var startValue = .1; //initial starting value, also modified by direction
-var i = .03;
-var direction = .1;// +/- direction in which the light moves
+var startValue = .1; //initial starting value, also modified by 'i'
+var i = .03;// +/- direction in which the light moves
 var begin = true;
 var timer = 1;
 var rR;
@@ -25,7 +24,7 @@ function loop(){
     if(begin == true){
         start();        
     }else{
-        console.log("listen to twitter");
+    	console.log("listen to twitter");
         //begin to listen to twitter
         twit.stream('filter', { track: track }, function(stream) {
 			//event
@@ -57,6 +56,13 @@ function start(){
         delay(); //wait 5 seconds, then continue in loop().
     }
 }
+
+function delay(){
+setTimeout(function(){
+   begin = false;   
+}, 5000);
+}
+
 function colorGradient(){
 	//do something nice with our random generated rgb values (rR,rG,rB)
 	//increase piblaster.setPwm(n,x) x to 1 at the end.
@@ -81,10 +87,6 @@ function printFragment(prefixMessage, value){
 	if(typeof value !== 'undefined') console.log(prefixMessage+" "+value);
 }
 
-function delay(){
-setTimeout(function(){
-   begin = false;   
-}, 5000);
-}
+
 
 
