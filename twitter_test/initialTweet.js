@@ -29,7 +29,7 @@ function loop(){
 	    		//here is where the colorGradient should go. colorGradient() will swirl colors then turn to white. 	    		    	
 	    	   	colorGradient();
 	     		isOn = false;
-				}, timeOn);    	   	
+			}, timeOn);    	   	
 			}
 		});
 	});
