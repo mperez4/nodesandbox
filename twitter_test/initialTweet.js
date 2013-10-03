@@ -8,6 +8,8 @@ var i = .03;// +/- direction in which the light moves
 var begin = true;
 var timer = 1;
 var rR, rG, rB;
+setInterval(loop, 300);
+
 var twit = new twitter({
     consumer_key: 'TroyIuC1l3i3laNlwl5mg',
     consumer_secret: 'qYRSTEHzHhTsL0CBcMnXxjqeY5UQ6U4C0kNvmPSG4K4',
