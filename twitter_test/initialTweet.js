@@ -1,18 +1,13 @@
 var gpio = require("pi-gpio");
 var piblaster = require('pi-blaster.js');
-
+var util = require('util'), twitter = require('twitter');
 var track = "javascript";
 var isOn = false; //keeps track if led is on and doesn't allow new connection to be opened if it is
 var startValue = .1; //initial starting value, also modified by 'i'
 var i = .03;// +/- direction in which the light moves
 var begin = true;
 var timer = 1;
-var rR;
-var rG;
-var rB;
-
-var util = require('util'),
-    twitter = require('twitter');
+var rR, rG, rB;
 var twit = new twitter({
     consumer_key: 'TroyIuC1l3i3laNlwl5mg',
     consumer_secret: 'qYRSTEHzHhTsL0CBcMnXxjqeY5UQ6U4C0kNvmPSG4K4',
@@ -28,13 +23,13 @@ function loop(){
         //begin to listen to twitter
         twit.stream('filter', { track: track }, function(stream) {
 			//event
-   			stream.on('data', function(data) {
-    			if(output(data) && !isOn){
-    				setTimeout(function(){
-		    		//here is where the colorGradient should go. colorGradient() will swirl colors then turn to white. 	    		    	
-		    	   	colorGradient();
-		    		isOn = false;
-		    }, timeOn);    	   	
+   		stream.on('data', function(data) {
+    		if(output(data) && !isOn){
+   				setTimeout(function(){
+	    		//here is where the colorGradient should go. colorGradient() will swirl colors then turn to white. 	    		    	
+	    	   	colorGradient();
+	     		isOn = false;
+			}, timeOn);    	   	
 		}
 	});
 });
